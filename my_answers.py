@@ -64,12 +64,12 @@ class NeuralNetwork(object):
         #### Implement the forward pass here ####
         ### Forward pass ###
         # TODO: Hidden layer - Replace these values with your calculations.
-        hidden_inputs = None # signals into hidden layer
-        hidden_outputs = None # signals from hidden layer
+        hidden_inputs = np.dot(X, weights_input_hidden)
+        hidden_outputs = sigmoid(hidden_layer_input)
 
         # TODO: Output layer - Replace these values with your calculations.
-        final_inputs = None # signals into final output layer
-        final_outputs = None # signals from final output layer
+        final_inputs = np.dot(hidden_layer_output, weights_hidden_output)
+        final_outputs = sigmoid(output_layer_in)
         
         return final_outputs, hidden_outputs
 
