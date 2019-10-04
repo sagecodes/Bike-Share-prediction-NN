@@ -135,8 +135,8 @@ class NeuralNetwork(object):
             n_records: number of records
 
         '''
-        self.weights_hidden_to_output += learning_rate * delta_weights_h_o / n_records # update hidden-to-output weights with gradient descent step
-        self.weights_input_to_hidden += learning_rate * delta_weights_i_h / n_records # update input-to-hidden weights with gradient descent step
+        self.weights_hidden_to_output += self.lr * delta_weights_h_o / n_records # update hidden-to-output weights with gradient descent step
+        self.weights_input_to_hidden += self.lr * delta_weights_i_h / n_records # update input-to-hidden weights with gradient descent step
 
     def run(self, features):
         ''' Run a forward pass through the network with input features 
@@ -149,11 +149,11 @@ class NeuralNetwork(object):
         #### Implement the forward pass here ####
         # TODO: Hidden layer - replace these values with the appropriate calculations.
         hidden_inputs = np.dot(features, self.weights_input_to_hidden) # signals into hidden layer
-        hidden_outputs = sigmoid(self.weights_hidden_to_output) # signals from hidden layer
+        hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
         
         # TODO: Output layer - Replace these values with the appropriate calculations.
-        final_inputs = np.dot(hidden_layer_output, weights_hidden_output) # signals into final output layer
-        final_outputs = sigmoid(output_layer_in) # signals from final output layer 
+        final_inputs = np.dot(hidden_outputs, self.weights_hidden_to_output) # signals into final output layer
+        final_outputs = final_inputs # signals from final output layer 
         
         return final_outputs
 
