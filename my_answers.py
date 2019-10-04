@@ -115,7 +115,7 @@ class NeuralNetwork(object):
         hidden_error = np.dot(error, self.weights_hidden_to_output.T) # .T to Transpose Matrices for multiplication
         
         # TODO: Backpropagated error terms - Replace these values with your calculations.
-        output_error_term = error * final_outputs * (1 - final_outputs) 
+        output_error_term = error * 1 # error * final_outputs * (1 - final_outputs) 
         
         hidden_error_term = hidden_error * hidden_outputs * (1 - hidden_outputs)
         
